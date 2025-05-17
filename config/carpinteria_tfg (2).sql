@@ -7,7 +7,12 @@
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 /* DROP DATABASE IF NOT EXISTS carpinteria_tfg;
+
 CREATE DATABASE  carpinteria_tfg; */
+
+DROP DATABASE carpinteria_tfg;
+CREATE DATABASE carpinteria_tfg;
+USE carpinteria_tfg;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -24,16 +29,7 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `categorias_producto`
---
-
-CREATE TABLE `categorias_producto` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
+- -----------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `clientes`
@@ -455,13 +451,7 @@ CREATE TABLE `ventas` (
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `categorias_producto`
---
-ALTER TABLE `categorias_producto`
-  ADD PRIMARY KEY (`id`);
-
+ 
 --
 -- Indices de la tabla `clientes`
 --
@@ -544,13 +534,7 @@ ALTER TABLE `producciones`
   ADD KEY `responsable_id` (`responsable_id`);
 
 --
--- Indices de la tabla `productos`
---
-ALTER TABLE `productos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `categoria_id` (`categoria_id`),
-  ADD KEY `solicitud_id` (`solicitud_id`);
-
+ 
 --
 -- Indices de la tabla `proveedores`
 --
@@ -602,12 +586,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
---
--- AUTO_INCREMENT de la tabla `categorias_producto`
---
-ALTER TABLE `categorias_producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
+ 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
@@ -768,12 +747,7 @@ ALTER TABLE `producciones`
   ADD CONSTRAINT `producciones_ibfk_2` FOREIGN KEY (`responsable_id`) REFERENCES `empleados` (`id`);
 
 --
--- Filtros para la tabla `productos`
---
-ALTER TABLE `productos`
-  ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`categoria_id`) REFERENCES `categorias_producto` (`id`),
-  ADD CONSTRAINT `productos_ibfk_2` FOREIGN KEY (`solicitud_id`) REFERENCES `solicitudes_proyecto` (`id`);
-
+ 
 --
 -- Filtros para la tabla `solicitudes_proyecto`
 --
