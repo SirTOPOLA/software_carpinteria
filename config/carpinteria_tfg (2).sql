@@ -200,7 +200,7 @@ INSERT INTO `empleados` (`id`, `nombre`, `apellido`, `fecha_nacimiento`, `codigo
 --
 -- Estructura de tabla para la tabla `facturas`
 --
-
+/* 
 CREATE TABLE `facturas` (
   `id` int(11) NOT NULL,
   `venta_id` int(11) DEFAULT NULL,
@@ -208,7 +208,7 @@ CREATE TABLE `facturas` (
   `monto_total` decimal(10,2) DEFAULT NULL,
   `estado` enum('pendiente','pagada') DEFAULT 'pendiente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
+ */
 -- --------------------------------------------------------
 
 --
@@ -275,19 +275,7 @@ INSERT INTO `movimientos_material` (`id`, `material_id`, `tipo_movimiento`, `can
 (4, 1, 'salida', 16, '2025-05-10 08:40:45', 'montaje y ajuste', 4);
 
 -- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `pagos`
---
-
-CREATE TABLE `pagos` (
-  `id` int(11) NOT NULL,
-  `factura_id` int(11) DEFAULT NULL,
-  `monto_pagado` decimal(10,2) DEFAULT NULL,
-  `fecha_pago` date DEFAULT NULL,
-  `metodo_pago` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
+ 
 -- --------------------------------------------------------
 
 --
@@ -546,11 +534,7 @@ ALTER TABLE `movimientos_material`
 
 --
 -- Indices de la tabla `pagos`
---
-ALTER TABLE `pagos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `factura_id` (`factura_id`);
-
+ 
 --
 -- Indices de la tabla `producciones`
 --
@@ -661,11 +645,7 @@ ALTER TABLE `empleados`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `facturas`
---
-ALTER TABLE `facturas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
+ 
 --
 -- AUTO_INCREMENT de la tabla `imagenes_producto`
 --
@@ -684,12 +664,7 @@ ALTER TABLE `materiales`
 ALTER TABLE `movimientos_material`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
---
--- AUTO_INCREMENT de la tabla `pagos`
---
-ALTER TABLE `pagos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
+ 
 --
 -- AUTO_INCREMENT de la tabla `producciones`
 --
@@ -770,11 +745,7 @@ ALTER TABLE `detalles_venta`
   ADD CONSTRAINT `detalles_venta_ibfk_3` FOREIGN KEY (`servicio_id`) REFERENCES `servicios` (`id`);
 
 --
--- Filtros para la tabla `facturas`
---
-ALTER TABLE `facturas`
-  ADD CONSTRAINT `facturas_ibfk_1` FOREIGN KEY (`venta_id`) REFERENCES `ventas` (`id`);
-
+ 
 --
 -- Filtros para la tabla `imagenes_producto`
 --
@@ -788,12 +759,7 @@ ALTER TABLE `movimientos_material`
   ADD CONSTRAINT `movimientos_material_ibfk_1` FOREIGN KEY (`material_id`) REFERENCES `materiales` (`id`),
   ADD CONSTRAINT `movimientos_material_ibfk_2` FOREIGN KEY (`produccion_id`) REFERENCES `producciones` (`id`);
 
---
--- Filtros para la tabla `pagos`
---
-ALTER TABLE `pagos`
-  ADD CONSTRAINT `pagos_ibfk_1` FOREIGN KEY (`factura_id`) REFERENCES `facturas` (`id`);
-
+ 
 --
 -- Filtros para la tabla `producciones`
 --
